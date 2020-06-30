@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {
-      @PostMapping("/addcustomer")
+      @PostMapping("/addCustomer")
     public String addCustomer()
     {
         String cifNumber="00000";
