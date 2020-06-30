@@ -12,6 +12,12 @@ public class CustomerController {
         String cifNumber="00000";
         return cifNumber;
     }
+    @PostMapping("/newCustomer")
+    public String newCustomer()
+    {
+        String cifNumber="00000";
+        return cifNumber;
+    }
     @PutMapping("/updateCustomer/{id}")
     public String updateCustomer()
     {
