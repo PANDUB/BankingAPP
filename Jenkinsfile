@@ -2,8 +2,14 @@ pipeline {
     agent any
 
     stages {
+    stage('Checkout') {
+                steps {
+                   checkout scm
+                }
+            }
         stage('Build') {
             steps {
+            echo "My branch is: ${env.BRANCH_NAME}"
                 echo 'Building..'
             }
         }
@@ -12,10 +18,7 @@ pipeline {
                 echo 'Testing..'
             }
         }
-        stage 'Gradle Static Analysis'
-            withSonarQubeEnv {
-                sh "./gradlew clean sonarqube"
-            }
+
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
