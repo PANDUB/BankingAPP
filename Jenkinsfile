@@ -1,9 +1,13 @@
 pipeline {
     agent any
-
+environment {
+        DISABLE_AUTH = 'true'
+        DB_ENGINE    = 'sqlite'
+    }
     stages {
     stage('Checkout') {
                 steps {
+                  echo "environment is ${DISABLE_AUTH}""
                    checkout scm
                 }
             }
