@@ -4,9 +4,7 @@ environment {
         DISABLE_AUTH = 'true'
         DB_ENGINE    = 'sqlite'
     }
-    tools {
-            maven 'apache-maven-3.0.1'
-        }
+
     stages {
     stage('Checkout') {
                 steps {
@@ -15,9 +13,10 @@ environment {
                 }
             }
 
-         stage('Example') {
+          stage ('Compile Stage')  {
                         steps {
-                            sh 'mvn --version'
+                            withmaven(maven : 'maven_3_5_0')
+                             sh 'mvn clean compile'
                         }
                     }
 
