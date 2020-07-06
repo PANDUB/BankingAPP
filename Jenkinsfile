@@ -12,6 +12,10 @@ pipeline {
                 echo 'Testing..'
             }
         }
+        stage 'Gradle Static Analysis'
+            withSonarQubeEnv {
+                sh "./gradlew clean sonarqube"
+            }
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
