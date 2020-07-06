@@ -4,6 +4,9 @@ environment {
         DISABLE_AUTH = 'true'
         DB_ENGINE    = 'sqlite'
     }
+    tools {
+            maven 'apache-maven-3.0.1'
+        }
     stages {
     stage('Checkout') {
                 steps {
@@ -11,6 +14,13 @@ environment {
                    checkout scm
                 }
             }
+
+         stage('Example') {
+                        steps {
+                            sh 'mvn --version'
+                        }
+                    }
+
         stage('Build') {
             steps {
             echo "My branch is: ${env.BRANCH_NAME}"
