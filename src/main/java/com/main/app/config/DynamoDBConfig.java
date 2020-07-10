@@ -3,6 +3,7 @@ package com.main.app.config;
 import com.amazonaws.auth.AWSCredentialsProvider;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.client.builder.AwsClientBuilder;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBAsyncClient;
@@ -19,10 +20,12 @@ public class DynamoDBConfig {
     @Bean
     public DynamoDBMapper dynamoDBMapper()
     {
-        AmazonDynamoDB ddbClient = AmazonDynamoDBClientBuilder.standard()
+        AmazonDynamoDB ddbClient = AmazonDynamoDBClientBuilder.standard().
+                withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration
+                        ("dynamodb.eu-west-2.amazonaws.com","eu-west-2"))
                 .withCredentials(new AWSStaticCredentialsProvider
-                        (new BasicAWSCredentials("pandu.boyina@gmail.com", "Idc@246614")))
-                .withRegion(Regions.DEFAULT_REGION)
+                        (new BasicAWSCredentials("AKIAWSDQI6DYRQQER75G", "xCXn5/yHSbfVJ6y/YMOzm3U8L5h5m/af4zZ+Jutn")))
+
                 .build();
         return new DynamoDBMapper(ddbClient);
     }

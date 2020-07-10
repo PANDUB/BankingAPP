@@ -24,6 +24,10 @@ public class User {
     private String email;
     @DynamoDBAttribute(attributeName = "phoneNumber")
     private String phoneNumber;
+    @DynamoDBAttribute(attributeName = "age")
+    private int age;
+    @DynamoDBAttribute(attributeName = "gender")
+    private String gender;
 
 
 }

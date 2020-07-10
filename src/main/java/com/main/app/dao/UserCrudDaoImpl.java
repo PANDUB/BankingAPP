@@ -19,4 +19,5 @@ public class UserCrudDaoImpl implements  UserCrudDao{
         dynamoDBMapper.save(user);
         return user;
     }
+
 }
