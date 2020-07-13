@@ -1,0 +1,27 @@
+version: "3.7"
+services:
+  grafana:
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=password
+    image: "grafana/grafana:5.4.3"
+    networks:
+      monitoring:
+        aliases:
+          - grafana
+    ports:
+     - 3000:3000
+    volumes:
+      - "./grafana:/var/lib/grafana"
+  prometheus:
+    image: "prom/prometheus:v2.6.1"
+    ports:
+      - 9090:9090
+    volumes:
+      - ./prometheus:/var/lib/prometheus
+    networks:
+      monitoring:
+        aliases:
+          - prometheus
+networks:
+  monitoring:

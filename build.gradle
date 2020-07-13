@@ -1,5 +1,5 @@
 plugins {
-    id 'org.springframework.boot' version '2.2.2.RELEASE'
+    id 'org.springframework.boot' version '2.1.6.RELEASE'
     id 'io.spring.dependency-management' version '1.0.8.RELEASE'
     id 'java'
 
@@ -34,5 +34,10 @@ dependencies {
     }
     compileOnly 'org.projectlombok:lombok:1.18.8'
     annotationProcessor 'org.projectlombok:lombok:1.18.8'
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator
+   // compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
+
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
+    compile('io.micrometer:micrometer-registry-prometheus')
 
 }
