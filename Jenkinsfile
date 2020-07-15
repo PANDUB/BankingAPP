@@ -4,7 +4,7 @@ pipeline {
 
     environment {
         registry = "panduboyina/bankingapp-2.0-snapshot"
-        registryCredential = 'panduboyina'
+        registryCredential = 'dockerhub'
         dockerImage = ''
     }
 
@@ -27,7 +27,7 @@ pipeline {
         stage('Build image') {
             steps {
                 script {
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                    dockerImage = docker.build(registry + ":$BUILD_NUMBER")
                 }
             }
         }
