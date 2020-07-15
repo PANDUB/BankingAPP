@@ -1,8 +1,10 @@
 pipeline {
     agent any
-environment {
-        DISABLE_AUTH = 'true'
-        DB_ENGINE    = 'sqlite'
+
+    environment {
+        registry = "panduboyina/bankingapp-2.0-snapshot"
+        registryCredential = 'panduboyina'
+        dockerImage=''
     }
 
     stages {
@@ -22,10 +24,11 @@ environment {
                         }
                     }
 
-        stage('Build') {
+        stage('Build image') {
             steps {
-            echo "My branch is: ${env.BRANCH_NAME}"
-                echo 'Building..'
+            script {
+                dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                    }
             }
         }
         stage('Test') {
@@ -34,11 +37,16 @@ environment {
             }
         }
 
-        stage('Deploy') {
+        stage('Deploy image') {
             steps {
-                echo 'Deploying....'
+            script {
+                       docker.withRegistry( 'https://registry.hub.docker.com', registryCredential) {
+                        dockerImage.push()
+                                }
+                        }
+
             }
-        }
+
         stage('Publish Image') {
                     steps {
                         echo 'publish image into kubernates....'
