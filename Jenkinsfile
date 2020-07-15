@@ -16,6 +16,8 @@ environment {
           stage ('Compile Stage')  {
                         steps {
                          echo "compile the  code"
+                         sh './gradlew clean build'
+
 
                         }
                     }
@@ -37,7 +39,7 @@ environment {
                 echo 'Deploying....'
             }
         }
-        stage('publish image') {
+        stage('Publish Image') {
                     steps {
                         echo 'publish image into kubernates....'
                     }
