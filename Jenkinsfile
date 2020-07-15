@@ -15,7 +15,7 @@ environment {
 
           stage ('Compile Stage')  {
                         steps {
-                            withmaven(maven : 'maven_3_5_0')
+                          //  withmaven(maven : 'maven_3_5_0')
                              sh 'mvn clean compile'
                         }
                     }
@@ -37,5 +37,10 @@ environment {
                 echo 'Deploying....'
             }
         }
+        stage('publish image') {
+                    steps {
+                        echo 'Deploying....'
+                    }
+                }
     }
 }
