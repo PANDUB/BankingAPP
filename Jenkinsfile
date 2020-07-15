@@ -39,7 +39,7 @@ environment {
         }
         stage('publish image') {
                     steps {
-                        echo 'Deploying....'
+                        echo 'publish image into kubernates....'
                     }
                 }
     }
