@@ -15,8 +15,8 @@ environment {
 
           stage ('Compile Stage')  {
                         steps {
-                          //  withmaven(maven : 'maven_3_5_0')
-                             sh 'mvn clean compile'
+                         echo "compile the  code"
+
                         }
                     }
 
