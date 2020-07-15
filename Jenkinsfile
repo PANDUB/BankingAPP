@@ -11,7 +11,6 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                echo "environment is ${DISABLE_AUTH}"
                 checkout scm
             }
         }
