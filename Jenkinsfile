@@ -7,7 +7,7 @@ node {
         dockerImage = ''
     }
 
-    stages {
+
         stage('Checkout') {
             steps {
                 checkout scm
@@ -52,5 +52,5 @@ node {
                 echo 'publish image into kubernates....'
             }
         }
-    }
+
 }
