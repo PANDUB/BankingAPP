@@ -27,7 +27,8 @@ pipeline {
         stage('Build image') {
             steps {
                 script {
-                    dockerImage = docker.build(registry + ":$BUILD_NUMBER")
+                docker.withRegistry('https://registry.hub.docker.com', registryCredential)
+                   // dockerImage = docker.build(registry + ":$BUILD_NUMBER")
                 }
             }
         }
