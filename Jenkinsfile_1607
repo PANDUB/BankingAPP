@@ -1,5 +1,6 @@
-#!/usr/bin/env groovy
-node {
+
+pipeline {
+    agent any
 
     environment {
         registry = "panduboyina/bankingapp-2.0-snapshot"
@@ -26,8 +27,8 @@ node {
         stage('Build image') {
             steps {
                 script {
-                    docker.withRegistry('https://registry.hub.docker.com', registryCredential)
-                    // dockerImage = docker.build(registry + ":$BUILD_NUMBER")
+                docker.withRegistry('https://registry.hub.docker.com', registryCredential)
+                   // dockerImage = docker.build(registry + ":$BUILD_NUMBER")
                 }
             }
         }
@@ -47,10 +48,10 @@ node {
 
             }
         }
-        stage('Publish Image') {
-            steps {
-                echo 'publish image into kubernates....'
+            stage('Publish Image') {
+                steps {
+                    echo 'publish image into kubernates....'
+                }
             }
         }
     }
-}
