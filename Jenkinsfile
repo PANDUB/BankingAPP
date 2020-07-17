@@ -26,7 +26,7 @@ node {
         stage('Build image') {
 
                 script {
-                    docker.withRegistry('https://registry.hub.docker.com', registryCredential)
+                    docker.withRegistry('https://registry.hub.docker.com', ":$registryCredential")
                     // dockerImage = docker.build(registry + ":$BUILD_NUMBER")
                 }
 
