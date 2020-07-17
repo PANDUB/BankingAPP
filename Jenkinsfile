@@ -48,9 +48,9 @@ node {
             }
         }
         stage('Publish Image') {
-            steps {
+
                 echo 'publish image into kubernates....'
-            }
+
         }
 
 }
